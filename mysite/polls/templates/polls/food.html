@@ -1,0 +1,62 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+
+    <div class="container-fluid">
+  <h1>fczc</h1>
+  <h2 style="padding:25px;font-family:'Comic Sans MS', cursive, sans-serif;text-align:center">Jadłospis</h2>
+  <div class="table-responsive" style="min-width:80%">
+    <table class="table table-hover">
+      <caption style="text-align:right">Numerki od *1 do *12 oznaczają jakieś alergeny. PS.Dane są nieaktualne z powodu lenistwa p.Marty Sosnowskiej</caption>
+
+      <thead class="thead-dark" style="text-align:center"
+        <tr>
+          <th>#</th>
+          <th>Śniadanie</th>
+          <th>Obiad</th>
+          <th>Kolacja</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="day"><b style="top:20px">Poniedziałek</b></td>
+          {% if T %}
+          <td>{{T.1}}</td>
+          <td>{{T.2}}</td>
+          <td>{{T.3}}</td>
+
+        </tr>
+        <tr>
+          <td class="day"><b style="top:20px">Wtorek</b></td>
+          <td>{{T.5}}</td>
+          <td>{{T.6}}</td>
+          <td>{{T.7}}</td>
+
+        </tr>
+        <tr>
+          <td class="day"><b style="top:25px">Środa</b></td>
+          <td>{{T.9}}</td>
+          <td>{{T.10}}</td>
+          <td>{{T.11}}</td>
+
+        </tr>
+        <tr>
+          <td class="day"><b style="top:30px">Czwartek</b></td>
+          <td>{{T.13}}</td>
+          <td>{{T.14}}</td>
+          <td>{{T.15}}</td>
+
+        </tr>
+        <tr>
+          <td class="day"><b style="top:20px">Piątek</b></td>
+          <td>{{T.17}}</td>
+          <td>{{T.18}}</td>
+          <td>{{T.19}}</td>
+          {% endif %}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

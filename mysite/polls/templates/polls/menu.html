@@ -1,0 +1,9 @@
+{% if T %}
+    <ul>
+    {% for i in T %}
+        <li>>{{ i }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
