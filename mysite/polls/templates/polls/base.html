@@ -4,9 +4,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="utf-8">
 
-  <title>Jedzonko</title>
-
-  <title>jedzeniewinternacie.pl</title>
+  <title>Witamy na stronie inneed</title>
 
   <style>
     table,caption{
@@ -28,23 +26,64 @@
       background-color: #343a40;
       border-color: #454d55;
     }
+    #time,#date{
+      color:#fff;
+    }
+    #date{
+      position: relative;
+      left:0px;
+      width: 50px;
+      height: 50px;
+    }
 </style>
   </head>
   <body>
 
 
-      <nav class="navbar navbar-light bg-light">
+      <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
           <img src="" width="50" height="35" class="d-inline-block align-top" alt="">
-          jedzeniezinternatu.pl
+          inneed.com
         </a>
-
+        <div id="date2"></div>
+        <div id="time">rsrtry</div>
       </nav>
 
       {% block content %}
       {% endblock %}
 
 
+      <script>
+        function checkTime(i) {
+            if (i < 10) {
+              i = "0" + i;
+            }
+            return i;
+          }
 
+          function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            // add a zero in front of numbers<10
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+            t = setTimeout(function() {
+              startTime()
+            }, 500);
+          }
+          startTime();
+        function dayofweek()
+        {
+          var options = {  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+var prnDt = 'Printed on ' + new Date().toLocaleTimeString('pl', options);
+document.getElementById('date').innerHTML = prnDt;
+
+
+        }
+
+        </script>
   </body>
 </html>
