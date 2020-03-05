@@ -1,47 +1,60 @@
 {% extends 'polls/base.html' %}
 
 {% block content %}
-<div>{{day}}</div>
 
-<div>{{hour}}</div>
-
-<div>{{p}}</div>
 <div class="container-fluid">
-    <h2>Basen CityZen</h2>
-    <table>
-        <thead class="thead-dark" style="text-align:center">
-            <tr>
+    <div class="container-fluid">
+        <h2 style="padding:25px;font-family:'Comic Sans MS', cursive, sans-serif;text-align:center">Basen CityZen</h2>
+        <div class="table-responsive" style="min-width:80%">
+          <table class="table table-striped">
+            <caption style="text-align:right">Ilość wolnych torów nie uwzględnia małego basenu</caption>
+      
+            <thead class="thead" style="text-align:center">
+              <tr>
+                <th>{{day}}</th>
                 <th>Godzina</th>
-                <th>Ilosc wolnych torów</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>31312</td>
-                <td>4</td>
-            </tr>
-         
-            <tr>
-                <td>31312</td>
-                <td>4</td>
-            </tr>
-
-            <tr>
-                <td>31312</td>
-                <td>4</td>
-            </tr>
-         
-            <tr>
-                <td>31312</td>
-                <td>4</td>
-            </tr>
-
-            <tr>
-                <td>31312</td>
-                <td>4</td>
-            </tr>
-        </tbody>
-    </table>
-
-</div>
+                <th>Ilość wolnych torów</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="day"><b style="top:20px">Poniedziałek</b></td>
+                {% if d %}
+                <td>{{d['05:45']}}</td>
+                <td></td>
+                <td></td>
+      
+              </tr>
+              <tr>
+                <td class="day"><b style="top:20px">Wtorek</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+      
+              </tr>
+              <tr>
+                <td class="day"><b style="top:25px">Środa</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+      
+              </tr>
+              <tr>
+                <td class="day"><b style="top:30px">Czwartek</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+      
+              </tr>
+              <tr>
+                <td class="day"><b style="top:20px">Piątek</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                {% endif %}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 {% endblock %}

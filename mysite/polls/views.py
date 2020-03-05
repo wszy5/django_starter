@@ -76,8 +76,7 @@ def swim(request):
     c = T[T.index('07:15'):T.index('08:00')-1].count('')
     d = T[T.index('08:00'):T.index('08:45')-1].count('')
     e = T[T.index('08:45'):T.index('09:30')-1].count('')
-    f = T[T.index('09:30'):T.index('06:30')-1].count('')
-    g = T[T.index('05:45'):T.index('10:15')-1].count('')
+    f = T[T.index('09:30'):T.index('10:15')-1].count('')
     h = T[T.index('10:15'):T.index('11:00')-1].count('')
     i = T[T.index('11:00'):T.index('11:45')-1].count('')
     j = T[T.index('11:45'):T.index('12:30')-1].count('')
@@ -95,7 +94,8 @@ def swim(request):
     x = T[T.index('20:45'):T.index('21:30')-1].count('')
     y = T[T.index('21:30'):len(T)-1].count('')
     p = y
-    tor
+    d = {'05:45':a,'06:30':b,'07:15':c,'08:00':d,'08:45':e,'09:30':f,'10:15':h,'11:00':i,'11:45':j,'12:30':k,'13:15':l,'14:00':m,
+    '14:45':n,'15:30':o,'16:15':p,'17:00':r,'17:45':s,'18:30':t,'19:15':u,'20:00':w,'20:45':x,'21:30':y}
 
-    context = {'day':day,'hour':hour,'tor2':tor2,'p':p,'T':T}
+    context = {'day':day,'hour':hour,'tor2':tor2,'p':p,'T':T,'d':d}
     return render(request,'polls/swim.html',context)

@@ -20,28 +20,38 @@
 
     }
     table, th, td {
-      border: 1px solid black;}
-    .day{
-      color: #fff;
-      background-color: #343a40;
-      border-color: #454d55;
+      border: 1px solid rgb(156, 73, 74);
+      color:#D9CFC1}
+    .day,th{
+      color: #D9CFC1;
+      background-color:#773A3B;
+      border-color: rgb(156, 73, 74);
     }
-    #time,#date{
-      color:#fff;
+    #time{
+      font-size: 18px;
     }
     #date{
       position: relative;
       left:0px;
-      width: 50px;
-      height: 50px;
+      width: 80px;
+      height: 80px;
+      font-size: 18px;
+    }
+    .navbar{
+      background-color: #A85751;
+      color:#D9CFC1;
+    }
+    body{
+      background-color: #27252D;
+      color:#D9CFC1;
     }
 </style>
   </head>
   <body>
 
 
-      <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
+      <nav class="navbar">
+        <a class="navbar-brand">
           <img src="" width="50" height="35" class="d-inline-block align-top" alt="">
           inneed.com
         </a>
@@ -83,7 +93,7 @@ document.getElementById('date').innerHTML = prnDt;
 
 
         }
-
+        dayofweek();
         </script>
   </body>
 </html>
