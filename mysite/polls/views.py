@@ -46,7 +46,7 @@ def menu(request):
 def swim(request):
     session = requests.Session() #otwarcie połączenia dla cityzen
     content = session.get('https://basen-cityzen-cms.efitness.com.pl/kalendarz-zajec') #pobranie zawartosci strony
-    cityzen_site = soup(content.text,'html.parser')
+    cityzen_site = soup(content.text,'html.parser') #tworzenie obiektu bs4
 
     day = cityzen_site.findAll('a',class_="scheduler-go-to-day") #sprawdzenie dnia tygodnia
     day = str(day)
@@ -54,23 +54,17 @@ def swim(request):
     day = day.text
     day = day[1:-1]
 
-    now = datetime.datetime.utcnow().replace(tzinfo=utc)#sprawdzenie aktualnego czasu
+    now = datetime.datetime.utcnow().replace(tzinfo=utc)  #sprawdzenie aktualnego czasu
     now = datetime.datetime.now().strftime('%H:%M')
     hour = now
-    #session.config['keep_alive'] = False
-    #session2 = requests.Session()#otwarcie poł dla POSIRu
-    #content2 = session2.get('https://basen-cityzen-cms.efitness.com.pl/kalendarz-zajec') #pobranie zawartosci strony
-    #posir_site = soup(content2.text,'html.parser')
+
     tory = cityzen_site.findAll('td')
-    tor2 = tory[85].get_text()
 
-
-
-
-    T = []
+    T = []  #w tej liscie sa przechowywane sformatowane godziny wolnych torow
     for i in range(len(tory)):
         T.append(tory[i].get_text().strip())
-
+    print(tory)
+    #----------najwazniejsza czesc scrapingu----------------
     a = T[T.index('05:45'):T.index('06:30')-1].count('')    #-1 przy indeksach ignoruje mały basen
     b = T[T.index('06:30'):T.index('07:15')-1].count('')
     c = T[T.index('07:15'):T.index('08:00')-1].count('')
@@ -93,9 +87,14 @@ def swim(request):
     w = T[T.index('20:00'):T.index('20:45')-1].count('')
     x = T[T.index('20:45'):T.index('21:30')-1].count('')
     y = T[T.index('21:30'):len(T)-1].count('')
-    p = y
+
+    #odwzorowanie godzin na liczbe wolnych torow
     d = {'05:45':a,'06:30':b,'07:15':c,'08:00':d,'08:45':e,'09:30':f,'10:15':h,'11:00':i,'11:45':j,'12:30':k,'13:15':l,'14:00':m,
     '14:45':n,'15:30':o,'16:15':p,'17:00':r,'17:45':s,'18:30':t,'19:15':u,'20:00':w,'20:45':x,'21:30':y}
 
-    context = {'day':day,'hour':hour,'tor2':tor2,'p':p,'T':T,'d':d}
+    fd = dict(filter(lambda i:i[0]>hour,d.items())) #filtrowany słownik
+
+    
+
+    context = {'day':day,'hour':hour,'fd':fd}
     return render(request,'polls/swim.html',context)

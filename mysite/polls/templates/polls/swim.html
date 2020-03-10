@@ -8,53 +8,46 @@
         <div class="table-responsive" style="min-width:80%">
           <table class="table table-striped">
             <caption style="text-align:right">Ilość wolnych torów nie uwzględnia małego basenu</caption>
-      
+
             <thead class="thead" style="text-align:center">
-              <tr>
-                <th>{{day}}</th>
+              <tr style="color: red" height="20px">
                 <th>Godzina</th>
                 <th>Ilość wolnych torów</th>
               </tr>
             </thead>
             <tbody>
+            {% for key,value in fd.items %}
               <tr>
-                <td class="day"><b style="top:20px">Poniedziałek</b></td>
-                {% if d %}
-                <td>{{d['05:45']}}</td>
-                <td></td>
-                <td></td>
-      
-              </tr>
-              <tr>
-                <td class="day"><b style="top:20px">Wtorek</b></td>
-                <td></td>
-                <td></td>
-                <td></td>
-      
-              </tr>
-              <tr>
-                <td class="day"><b style="top:25px">Środa</b></td>
-                <td></td>
-                <td></td>
-                <td></td>
-      
-              </tr>
-              <tr>
-                <td class="day"><b style="top:30px">Czwartek</b></td>
-                <td></td>
-                <td></td>
-                <td></td>
-      
-              </tr>
-              <tr>
-                <td class="day"><b style="top:20px">Piątek</b></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                {% endif %}
-              </tr>
+                <td>{{key}}</td>
+                <td>{{value}}</td>
+             </tr>
+         {% endfor %}
             </tbody>
           </table>
         </div>
       </div>
+      <div class="container-fluid" id="chwialka">
+          <div class="container-fluid">
+              <h2 style="padding:25px;font-family:'Comic Sans MS', cursive, sans-serif;text-align:center">Basen CityZen</h2>
+              <div class="table-responsive" style="min-width:80%">
+                <table class="table table-striped">
+                  <caption style="text-align:right">Ilość wolnych torów nie uwzględnia małego basenu</caption>
+
+                  <thead class="thead" style="text-align:center">
+                    <tr style="color: red" height="20px">
+                      <th>Godzina</th>
+                      <th>Ilość wolnych torów</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for key,value in fd.items %}
+                    <tr>
+                      <td>{{key}}</td>
+                      <td>{{value}}</td>
+                   </tr>
+               {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
 {% endblock %}
