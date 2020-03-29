@@ -63,7 +63,7 @@ def swim(request):
     T = []  #w tej liscie sa przechowywane sformatowane godziny wolnych torow
     for i in range(len(tory)):
         T.append(tory[i].get_text().strip())
-    print(tory)
+    
     #----------najwazniejsza czesc scrapingu----------------
     a = T[T.index('05:45'):T.index('06:30')-1].count('')    #-1 przy indeksach ignoruje mały basen
     b = T[T.index('06:30'):T.index('07:15')-1].count('')
@@ -94,7 +94,7 @@ def swim(request):
 
     fd = dict(filter(lambda i:i[0]>hour,d.items())) #filtrowany słownik
 
-    
+
 
     context = {'day':day,'hour':hour,'fd':fd}
     return render(request,'polls/swim.html',context)
